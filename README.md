@@ -1,4 +1,4 @@
-# TCS - Bank Management System
+# Bank Management System
 
 ## Description
 
