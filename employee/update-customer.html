@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Customer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="flex justify-center h-screen w-screen items-center">
+      <div class="w-1/4 flex justify-center content-center flex-col h-1/2">
+        <h3 class="text-xl text-center font-bold">Customer Updation</h3>
+        <div class="mt-3 flex flex-col">
+          <label for="accnum">Account No.</label>
+          <input
+            readonly
+            id="accnum"
+            class="border border-slate-700 p-1 rounded"
+          />
+        </div>
+        <div class="mt-3 flex flex-col">
+          <label for="password">Name:</label>
+          <input class="border border-slate-700 p-1 rounded" />
+        </div>
+        <div class="mt-3 flex flex-col">
+          <label for="password">Mobile Number:</label>
+          <input class="border border-slate-700 p-1 rounded" />
+        </div>
+        <div class="mt-3 flex flex-col">
+          <label for="password">Email:</label>
+          <input class="border border-slate-700 p-1 rounded" />
+        </div>
+
+        <button
+          id="login-btn"
+          class="mt-6 p-2 bg-red-500 rounded hover:bg-red-600 w-auto text-white"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+
+    <script>
+      var up = localStorage.getItem("updatingUser");
+      var cu = localStorage.getItem("customers");
+      var ju = JSON.parse(cu);
+      console.log(up);
+      console.log(cu);
+      console.log(ju);
+
+      for (let key of ju) {
+        console.log(key.id);
+      }
+      var res = ju.filter((c) => {
+        return c.id == up;
+      });
+      console.log(res);
+      if (res.length == 0) {
+        alert("NO such user");
+      }
+      let user = res[0];
+      var ele = document.getElementById("accnum");
+      ele.value = user.account_number;
+    </script>
+  </body>
+</html>

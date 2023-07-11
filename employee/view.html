@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>View Details</title>
+  </head>
+  <body>
+    <h3 class="m-3 p-2 text-xl text-center font-bold">View Customer Details</h3>
+    <div>
+      <table id="customersTable" class="w-full">
+        <thead>
+          <tr class="bg-blue-100 border text-left px-8 py-4">
+            <td class="p-2 border w-1/6">Account Number</td>
+            <td class="p-2 border w-1/6">Account Name</td>
+            <td class="p-2 border w-1/6">Account Type</td>
+            <td class="p-2 border w-1/6">Mobile No.</td>
+            <td class="p-2 border w-1/6">Branch</td>
+            <td class="p-2 border w-1/6">IFSC Code</td>
+            <td class="p-2 border w-1/6">Action</td>
+          </tr>
+        </thead>
+      </table>
+      <a
+        class="p-2 text-red-500 underline flex justify-center"
+        href="./home.html"
+      >
+        Back to Home
+      </a>
+    </div>
+
+    <script>
+      let allCustomers = [
+        {
+          id: "123",
+          emp_id: "111",
+          account_number: "2585608",
+          account_name: "Hafeezz",
+          account_type: "Savings",
+          mobile_number: 6302568616,
+          branch: "Hyderabad",
+          ifsc_code: "HDFC0002347",
+        },
+        {
+          id: "345",
+          emp_id: "112",
+          account_number: "2585607",
+          account_name: "Mohith",
+          account_type: "Current",
+          mobile_number: 7238191828,
+          branch: "Bhopal",
+          ifsc_code: "HDFC0008378",
+        },
+        {
+          id: "567",
+          emp_id: "111",
+          account_number: "2585606",
+          account_name: "Abhishek",
+          account_type: "Savings",
+          mobile_number: 8624829922,
+          branch: "Indore",
+          ifsc_code: "HDFC0008362",
+        },
+      ];
+      var cum = localStorage.getItem("customers");
+      console.log(cum);
+      renderTableData(allCustomers);
+
+      function renderTableData(customers) {
+        var table = document.getElementById("customersTable");
+
+        customers.forEach((customer) => {
+          let newrow = document.createElement("tr");
+          newrow.id = customer.id;
+          for (let [key, value] of Object.entries(customer)) {
+            if (key != "id" && key != "emp_id") {
+              let cell = document.createElement("td");
+              cell.innerText = value;
+              cell.classList.add("border", "p-2");
+              newrow.append(cell);
+            }
+          }
+
+          let cell = document.createElement("td");
+          cell.innerHTML = `<span>
+              <button onclick = "update(this)"
+                
+              >Update</button>
+              <button href='./delete-customer.html'>Delete</button>
+            </span>`;
+
+          cell.classList.add("border", "p-2");
+          newrow.append(cell);
+          table.appendChild(newrow);
+        });
+      }
+      function update(button) {
+        var rowId = button.parentNode.parentNode.parentNode.getAttribute("id");
+        localStorage.setItem("updatingUser", rowId);
+        window.location.href = "./update-customer.html";
+      }
+    </script>
+  </body>
+</html>

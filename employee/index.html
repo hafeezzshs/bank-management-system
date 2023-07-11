@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="flex justify-center h-screen w-screen items-center">
+      <div class="w-1/4 flex justify-center content-center flex-col h-1/2">
+        <h3 class="text-xl text-center font-bold">Account Login</h3>
+        <div class="mt-3 flex flex-col">
+          <label for="username">Username:</label>
+          <input
+            class="border border-slate-700 p-1 rounded"
+            type="text"
+            id="username"
+            placeholder="Enter Username"
+          />
+        </div>
+
+        <div class="mt-3 flex flex-col">
+          <label for="password">Password:</label>
+          <input
+            class="border border-slate-700 p-1 rounded"
+            id="password"
+            type="password"
+            placeholder="Enter Password"
+          />
+        </div>
+
+        <button
+          onclick="loginclick()"
+          id="loginBtn"
+          class="mt-6 p-2 bg-red-500 rounded hover:bg-red-600 w-auto text-white"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
